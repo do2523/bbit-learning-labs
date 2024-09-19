@@ -31,8 +31,8 @@ class mqConsumer(mqConsumerInterface):
     def startConsuming(self) -> None:
         print(" [*] Waiting for messages. To exit press CTRL+C")
         # Set-up Callback function for receiving messages
-        self.channel.basic_consume(
-        self.queue_name, self.on_message_callback, auto_ack=False
+        self.channel.basic_consume(queue=
+        self.queue_name,on_message_callback= self.on_message_callback, auto_ack=False
         )
 
     
