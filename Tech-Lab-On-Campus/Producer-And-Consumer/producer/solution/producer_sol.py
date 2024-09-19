@@ -17,17 +17,12 @@ class mqProducer(mqProducerInterface):
         self.connection = connection
         channel = self.connection.channel()
         exchange = channel.exchange_declare(exchange=self.exchange_name)
-        channel.basic_publish(
-            self.exchange_name,
-            self.routing_key,
-            body="Message",
-        )
     
     def publishOrder(self, message: str) -> None:
         channel = self.connection.channel()
         channel.basic_publish(
-            exchange="Exchange Name",
-            routing_key="Routing Key",
+            exchange=self.exchange_name,
+            routing_key=self.routing_key,
             body=message,
         )
         
